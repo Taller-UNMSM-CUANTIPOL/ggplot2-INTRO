@@ -5,10 +5,11 @@ subtitle: Introducción `ggplot2`
 date: 4/06/2023
 format:
   revealjs:
+    self-contained: true
     standalone: true
     theme: night
     progress: true
-    footer: <[Cuantipol](https://taller-unmsm-cuantipol-2023.github.io/Guia-instalacion-R/)>
+    footer: <[Cuantipol](https://taller-unmsm-cuantipol-2023.github.io/ggplot2-INTRO/)>
 incremental: false
 highlight-style: a11y
 ---
@@ -32,6 +33,16 @@ knitr::include_graphics("./diagrams/whole-game.png", dpi = 270)
 
 ##
 
+Visualizar
+Generar visualizaciones no es solamente "hacer un gráfico lindo"
+
+Es mas que eso, implica comunicar una idea, una información, un dato, de manera clara y lo mas precisa posible.
+
+El objetivo de esta parte no es solo aprender como armar un gráfico bien presentado, sino también entender cómo pensar en los inputs que necesito para lo que quiero comunicar y cuál es la mejor manera de expresarlo.
+
+Como toda buena idea, vamos a ir de lo general a lo específico, definiendo primero la base y puliendo a cada paso.
+
+Vamos a graficar en forma de cascada
 
 
 
@@ -51,23 +62,25 @@ knitr::include_graphics("./diagrams/whole-game.png", dpi = 270)
 
 
 
+## Bibliografía:
 
-Referencias:
+Wickham, H., Navarro, D., & Lin, T. (2009). *ggplot2. Elegant Graphics for Data Analysis * (3ª ed.). Springer. [https://ggplot2-book.org/](https://ggplot2-book.org/)
 
-Wickham, H., Navarro, D., & Lin, T. (2009). *ggplot2. Elegant Graphics for Data Analysis * (3ª ed.). Springer. https://ggplot2-book.org/
+Wickham, H. (2010). *A Layered Grammar of Graphics*. Journal of Computational and Graphical Statistics, vol. 19, no. 1, pp. 3–28. [https://vita.had.co.nz/papers/layered-grammar.pdf](https://vita.had.co.nz/papers/layered-grammar.pdf)
 
-Wickham, H. (2010). *A Layered Grammar of Graphics*. Journal of Computational and Graphical Statistics, vol. 19, no. 1, pp. 3–28. https://vita.had.co.nz/papers/layered-grammar.pdf
-
-Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). *R for Data Science. Import, Tidy, Transform, Visualize, and Model Data* (2ª ed.). O'Reilly Media, Inc. https://r4ds.hadley.nz/
-
+Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). *R for Data Science. Import, Tidy, Transform, Visualize, and Model Data* (2ª ed.). O'Reilly Media, Inc. [https://r4ds.hadley.nz/](https://r4ds.hadley.nz/)
 
 
 
-
+##
+Crear presentaciones (PPT):
 
 [Revealjs](https://quarto.org/docs/presentations/revealjs/)
+
 [Advanced Reveal](https://quarto.org/docs/presentations/revealjs/advanced.html)
+
 [Revealjs Options](https://quarto.org/docs/reference/formats/presentations/revealjs.html)
+
 [Revealjs Plugins](https://quarto.org/docs/extensions/revealjs.html)
 
 

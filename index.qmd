@@ -1,0 +1,113 @@
+---
+title: "**<b style = 'color : #E18B2A;'>Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM</b>**"
+author:  Joel Belsasar
+subtitle: Introducción `ggplot2`
+date: 4/06/2023
+format:
+  revealjs:
+    standalone: true
+    theme: night
+    progress: true
+    footer: <[Cuantipol](https://taller-unmsm-cuantipol-2023.github.io/Guia-instalacion-R/)>
+incremental: false
+highlight-style: a11y
+---
+
+##
+
+```{r}
+#| label: fig-ds-whole-game 
+#| echo: false
+#| out.width: NULL
+#| fig-cap: |
+#|   [Whole game: Visualización](https://r4ds.hadley.nz/whole-game#fig-ds-whole-game)
+#| fig-alt: |
+#|   A diagram displaying the data science cycle: Import -> Tidy ->
+#|   Understand  (which has the phases Transform -> Visualize -> Model in a
+#|   cycle) -> Communicate. Surrounding all of these is Program 
+#|   Import, Tidy, Transform, and Visualize is highlighted.
+
+knitr::include_graphics("./diagrams/whole-game.png", dpi = 270)
+```
+
+##
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Referencias:
+
+Wickham, H., Navarro, D., & Lin, T. (2009). *ggplot2. Elegant Graphics for Data Analysis * (3ª ed.). Springer. https://ggplot2-book.org/
+
+Wickham, H. (2010). *A Layered Grammar of Graphics*. Journal of Computational and Graphical Statistics, vol. 19, no. 1, pp. 3–28. https://vita.had.co.nz/papers/layered-grammar.pdf
+
+Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). *R for Data Science. Import, Tidy, Transform, Visualize, and Model Data* (2ª ed.). O'Reilly Media, Inc. https://r4ds.hadley.nz/
+
+
+
+
+
+
+[Revealjs](https://quarto.org/docs/presentations/revealjs/)
+[Advanced Reveal](https://quarto.org/docs/presentations/revealjs/advanced.html)
+[Revealjs Options](https://quarto.org/docs/reference/formats/presentations/revealjs.html)
+[Revealjs Plugins](https://quarto.org/docs/extensions/revealjs.html)
+
+
+[]()
+[]()
+[]()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

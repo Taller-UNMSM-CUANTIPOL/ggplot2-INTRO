@@ -1,30 +1,51 @@
 [
   {
-    "objectID": "index.html#section",
-    "href": "index.html#section",
+    "objectID": "index.html#herramientas-para-la-ciencia-de-datos",
+    "href": "index.html#herramientas-para-la-ciencia-de-datos",
     "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
-    "section": "",
-    "text": "Figure 1: Whole game: Visualización"
+    "section": "Herramientas para la ciencia de datos",
+    "text": "Herramientas para la ciencia de datos\n\nFigure 1: Whole game: Visualización"
   },
   {
-    "objectID": "index.html#section-1",
-    "href": "index.html#section-1",
+    "objectID": "index.html#visualizar-datos",
+    "href": "index.html#visualizar-datos",
     "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
-    "section": "",
-    "text": "Visualizar Generar visualizaciones no es solamente “hacer un gráfico lindo”\nEs mas que eso, implica comunicar una idea, una información, un dato, de manera clara y lo mas precisa posible.\nEl objetivo de esta parte no es solo aprender como armar un gráfico bien presentado, sino también entender cómo pensar en los inputs que necesito para lo que quiero comunicar y cuál es la mejor manera de expresarlo.\nComo toda buena idea, vamos a ir de lo general a lo específico, definiendo primero la base y puliendo a cada paso.\nVamos a graficar en forma de cascada"
+    "section": "Visualizar… datos",
+    "text": "Visualizar… datos\n- Generar visualizaciones implica comunicar una idea, una información, un dato de manera clara y lo mas precisa posible.\nUna visualización de datos efectiva brinda a los usuarios medios intuitivos para…\n\nexplorar y analizar datos de manera interactiva, permitiéndoles\nidentificar de manera efectiva patrones interesantes,\ninferir correlaciones y causalidades, y\nbrindar soporte a actividades de comprensión.\n\nPero…\n\nNo solo implica aprender a crear un gráfico con una presentación adecuada, sino también comprender cómo abordar los inputs necesarios para lo que se necesite comunicar y, así, determinar la forma más efectiva de expresarlo."
+  },
+  {
+    "objectID": "index.html#entonces-por-qué-usar-r",
+    "href": "index.html#entonces-por-qué-usar-r",
+    "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
+    "section": "Entonces, ¿por qué usar R?",
+    "text": "Entonces, ¿por qué usar R?\nReproducibilidad\n\nPuedes anotar el scrpit, agregar información extra como títulos, etiquetas y leyendas, y mantener el código de todas las versiones de tus gráficos para saber siempre cómo se crearon.\n\nFlujo de trabajo unificado\n\nR nos permite llevar a cabo muchas tareas sin necesidad de utilizar otros programas.\nFunciones poderosas\n\nSe pueden utilizar múltiples paquetes y funciones para lograr una excelente visualización como base R, plotly, sjPlot, mapview, igraph y en particular nos vamos a enfocar en ggplot2."
+  },
+  {
+    "objectID": "index.html#ggplot",
+    "href": "index.html#ggplot",
+    "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
+    "section": "ggplot()",
+    "text": "ggplot()\n\nLa lógica que propone ggplot una de los paquetes de la familia tidyverse() es la estratificación\nSi existe un consenso en R, es que ggplot es la librería para graficar."
+  },
+  {
+    "objectID": "index.html#la-gramática-en-capas-de-gráficos-de-wickham-2009",
+    "href": "index.html#la-gramática-en-capas-de-gráficos-de-wickham-2009",
+    "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
+    "section": "La gramática en capas de gráficos de Wickham (2009)",
+    "text": "La gramática en capas de gráficos de Wickham (2009)\n\nFigure 2: Adaptado de Introduction to data visualisation"
   },
   {
     "objectID": "index.html#bibliografía",
     "href": "index.html#bibliografía",
     "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
     "section": "Bibliografía:",
-    "text": "Bibliografía:\nWickham, H., Navarro, D., & Lin, T. (2009). ggplot2. Elegant Graphics for Data Analysis  (3ª ed.). Springer. https://ggplot2-book.org/\nWickham, H. (2010). A Layered Grammar of Graphics. Journal of Computational and Graphical Statistics, vol. 19, no. 1, pp. 3–28. \nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science. Import, Tidy, Transform, Visualize, and Model Data (2ª ed.). O’Reilly Media, Inc. https://r4ds.hadley.nz/"
+    "text": "Bibliografía:\nWickham, H., Navarro, D., & Lin, T. (2009). ggplot2. Elegant Graphics for Data Analysis  (3ª ed.). Springer. https://ggplot2-book.org/\nWickham, H. (2010). A Layered Grammar of Graphics. Journal of Computational and Graphical Statistics, vol. 19, no. 1, pp. 3–28. https://vita.had.co.nz/papers/layered-grammar.pdf\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science. Import, Tidy, Transform, Visualize, and Model Data (2ª ed.). O’Reilly Media, Inc. https://r4ds.hadley.nz/\nIkakis, N. (2018). Big data visualization tools.” arXiv preprint. arXiv:1801.08336"
   },
   {
-    "objectID": "index.html#section-2",
-    "href": "index.html#section-2",
+    "objectID": "index.html#section-1",
+    "href": "index.html#section-1",
     "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
     "section": "",
-    "text": "Crear presentaciones (PPT):\nRevealjs Advanced Reveal Revealjs Options Revealjs Plugins\n  \n\n\n&lt;Cuantipol&gt;"
+    "text": "Crear presentaciones (PPT):\nRevealjs\nAdvanced Reveal\nRevealjs Options\nRevealjs Plugins\n  \n\n\n&lt;Cuantipol&gt;"
   }
 ]

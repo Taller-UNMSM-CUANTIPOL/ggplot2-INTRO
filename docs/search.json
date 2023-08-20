@@ -46,7 +46,7 @@
     "href": "index.html#dataset-worldbank",
     "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
     "section": "Dataset: WorldBank",
-    "text": "Dataset: WorldBank\n\nUtilicemos los datos económicos y sociales de diferentes países proporcionados por el Banco Mundial.\nPreprocesamiento de los datos:"
+    "text": "Dataset: WorldBank\n\nUtilicemos los datos económicos y sociales de diferentes países proporcionados por el Banco Mundial.\nPreprocesamiento de los datos:\n\npacman::p_load(WDI, # Data World Bank\n               ggplot2\n               )\n# Buscar indicadores relacionados con el PIB per cápita:\nindicadores &lt;- WDIsearch(\"GDP per capita\")\n\ndataf &lt;- WDI(country = \"PE\", indicator = c(\"NY.GDP.PCAP.CD\", # PBI\n                                             \"SH.DYN.MORT\"), # Mortalidad\n             start = 2000, end = 2022)\ndataf &lt;- data.frame(dataf)\n\n# Renombrar las variables del dataframe\ncolnames(dataf)[5:6] &lt;- c(\"PIB_Per_Capita\", \"Mortalidad_Infantil\")"
   },
   {
     "objectID": "index.html#capa-data",
@@ -87,7 +87,7 @@
     "objectID": "index.html#en-suma-en-un-solo-fragmento-de-código-1",
     "href": "index.html#en-suma-en-un-solo-fragmento-de-código-1",
     "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
-    "section": "En suma, en un solo fragmento de código:",
+    "section": "En suma, en un solo fragmento de código: ",
     "text": "En suma, en un solo fragmento de código:"
   },
   {

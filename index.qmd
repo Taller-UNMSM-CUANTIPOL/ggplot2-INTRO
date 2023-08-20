@@ -15,12 +15,13 @@ format:
 highlight-style: a11y
 ---
 
-## Herramientas para la ciencia de datos
+## <b style = 'color : #E18B2A;'>Herramientas para la ciencia de datos</b>
 
 ```{r}
 #| label: fig-ds-whole-game 
 #| echo: false
 #| out.width: NULL
+#| fig.align: center
 #| fig-cap: |
 #|   [Whole game: Visualización](https://r4ds.hadley.nz/whole-game#fig-ds-whole-game)
 #| fig-alt: |
@@ -32,7 +33,7 @@ highlight-style: a11y
 knitr::include_graphics("./diagrams/whole-game.png", dpi = 270)
 ```
 
-## Visualizar... datos
+## <b style = 'color : #E18B2A;'>Visualizar... datos</b>
 
 Una visualización de datos efectiva brinda a los usuarios medios intuitivos para...
 
@@ -48,7 +49,7 @@ Pero...
 
 - No solo implica aprender a crear un gráfico con una presentación adecuada, sino también comprender cómo abordar los *inputs* necesarios para lo que se necesite comunicar y, así, determinar la forma más efectiva de expresarlo.
 
-## Entonces, ¿por qué usar R?
+## <b style = 'color : #E18B2A;'>Entonces, ¿por qué usar R?</b>
 
 **Reproducibilidad**
 
@@ -62,7 +63,7 @@ Pero...
 
   - Se pueden utilizar múltiples paquetes y funciones para lograr una excelente visualización como `base R`, `plotly`, `sjPlot`, `mapview`, `igraph` y en particular nos vamos a enfocar en `ggplot2`.
 
-## `ggplot()`
+## <b style = 'color : #E18B2A;'>`ggplot()`</b>
 
 - La lógica que propone ggplot una de los paquetes de la familia tidyverse() es la estratificación
 
@@ -70,12 +71,17 @@ Pero...
 
 - En ggplot una capa se encarga de renderizar cada uno de los elementos visuales. Las capas forman una gramática o un conjunto de reglas mediante las cuales R creará los artefactos visuales. 
 
+```{r, fig.align = 'center'}
+knitr::include_graphics("./diagrams/ggplot2.png", dpi = 270)
+```
+
 ## La gramática en capas de gráficos de [Wickham (2009)](https://vita.had.co.nz/papers/layered-grammar.pdf)
 
 ```{r}
 #| label: fig-ds-gglayer 
 #| echo: false
 #| out.width: NULL
+#| fig.align: center
 #| fig-cap: |
 #|   Adaptado en [Introduction to data visualisation](https://github.com/QCBSRworkshops/workshop03)
 #| fig-alt: |
@@ -84,7 +90,7 @@ Pero...
 knitr::include_graphics("./diagrams/gglayers.png", dpi = 270)
 ```
 
-## Las capas básicas
+## <b style = 'color : #E18B2A;'>Las capas básicas</b>
 
 **1. La data:**
 
@@ -99,11 +105,28 @@ ggplot(dataframe) +
 geom_(mapping = aes(x, y), ...) + ...
 ```
 
-## Dataset: `WorldBank`
+## <b style = 'color : #E18B2A;'>Dataset: `WorldBank`</b>
 
 - Utilicemos los datos económicos y sociales de diferentes países proporcionados por el Banco Mundial.
 
 - Preprocesamiento de los datos:
+
+```markdown
+pacman::p_load(WDI, # Data World Bank
+               ggplot2
+               )
+# Buscar indicadores relacionados con el PIB per cápita:
+indicadores <- WDIsearch("GDP per capita")
+
+dataf <- WDI(country = "PE", indicator = c("NY.GDP.PCAP.CD", # PBI
+                                             "SH.DYN.MORT"), # Mortalidad
+             start = 2000, end = 2022)
+dataf <- data.frame(dataf)
+
+# Renombrar las variables del dataframe
+colnames(dataf)[5:6] <- c("PIB_Per_Capita", "Mortalidad_Infantil")
+```
+
 ```{r}
 pacman::p_load(WDI, # Data World Bank
                ggplot2
@@ -120,7 +143,7 @@ dataf <- data.frame(dataf)
 colnames(dataf)[5:6] <- c("PIB_Per_Capita", "Mortalidad_Infantil")
 ```
 
-## Capa: data
+## <b style = 'color : #E18B2A;'>Capa: data</b>
 
 ```markdown
 ggplot(data = dataf)
@@ -130,14 +153,14 @@ ggplot(data = dataf)
 # Without any other information, your data will not be visualised.
 ```
 
-## Capa: Aesthetics
+## <b style = 'color : #E18B2A;'>Capa: Aesthetics</b>
 
 ```markdown
 ggplot(data = dataf, 
        mapping = aes(x = Mortalidad_Infantil, 
            y = PIB_Per_Capita)) 
 ```
-```{r, fig.height=5, fig.width=6}
+```{r, fig.height=5, fig.width=6, fig.align = 'center'}
 # Next layer: aesthetics.
 # Here, we tell R to plot length on the x axis, and depth on the y axis
 # but we still haven't told R how we want these data to be represented...
@@ -149,7 +172,7 @@ ggplot(data = dataf,
 # We have not yet told `R` *how* we want to represent the data though, so our data will not yet be plotted.
 ```
 
-## Capa: Geométrica `geom_`
+## <b style = 'color : #E18B2A;'>Capa: Geométrica `geom_`</b>
 
 ```markdown
 ggplot(data = dataf, 
@@ -158,7 +181,7 @@ ggplot(data = dataf,
   geom_point()
   
 ```
-```{r, fig.height=5, fig.width=6, message = FALSE, warning = FALSE}
+```{r, fig.height=5, fig.width=6, message = FALSE, warning = FALSE, fig.align = 'center'}
 # Next layer(s): geometric object(s)
 ggplot(data = dataf, 
        aes(x = Mortalidad_Infantil, 
@@ -174,7 +197,7 @@ ggplot(data = dataf,
 # or add a linear regression. For now, let us keep it simple!
 ```
 
-## Capas: Coordinates, and themes
+## <b style = 'color : #E18B2A;'>Capas: Coordinates, and themes</b>
 
 ```markdown
 ggplot(data = dataf, 
@@ -183,7 +206,7 @@ ggplot(data = dataf,
        coord_trans(x = "log10", y = "log10") + 
        theme_classic()
 ```
-```{r,fig.height=5, fig.width=6, warning = FALSE}
+```{r,fig.height=5, fig.width=6, warning = FALSE, fig.align = 'center'}
 # Next layer(s): customizations!
 # Facets split a plot into separate windows according to some category in the data.
 ggplot(data = dataf, 
@@ -200,7 +223,7 @@ ggplot(data = dataf,
 # if we use `facet_wrap()` to create separate "facets" according to our species groupings:
 ```
 
-## En suma, en un solo fragmento de código:
+## <b style = 'color : #E18B2A;'>En suma, en un solo fragmento de código:</b>
 
 ```markdown
 # Crear la gráfica utilizando ggplot2
@@ -218,9 +241,9 @@ ggplot(dataf,                         # Data
       text = element_text(size = 16))
 ```
 
-## En suma, en un solo fragmento de código:
+## <b style = 'color : #E18B2A;'>En suma, en un solo fragmento de código: </b>
 
-```{r, fig.height=7, fig.width=9, results='hide', message=FALSE, warning=FALSE}
+```{r, fig.height=7, fig.width=9, results='hide', message=FALSE, warning=FALSE, fig.align = 'center'}
 # Crear la gráfica utilizando ggplot2
 ggplot(data = dataf,               # Data
        aes(x = Mortalidad_Infantil,        # Your X-value

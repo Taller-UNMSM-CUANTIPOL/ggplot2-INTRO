@@ -11,7 +11,7 @@
     "href": "index.html#visualizar-datos",
     "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
     "section": "Visualizar… datos",
-    "text": "Visualizar… datos\n- Generar visualizaciones implica comunicar una idea, una información, un dato de manera clara y lo mas precisa posible.\nUna visualización de datos efectiva brinda a los usuarios medios intuitivos para…\n\nexplorar y analizar datos de manera interactiva, permitiéndoles\nidentificar de manera efectiva patrones interesantes,\ninferir correlaciones y causalidades, y\nbrindar soporte a actividades de comprensión.\n\nPero…\n\nNo solo implica aprender a crear un gráfico con una presentación adecuada, sino también comprender cómo abordar los inputs necesarios para lo que se necesite comunicar y, así, determinar la forma más efectiva de expresarlo."
+    "text": "Visualizar… datos\nUna visualización de datos efectiva brinda a los usuarios medios intuitivos para…\n\nexplorar y analizar datos de manera interactiva, permitiéndoles\nidentificar de manera efectiva patrones interesantes,\ninferir correlaciones y causalidades, y\nbrindar soporte a actividades de comprensión.\n\nPero…\n\nNo solo implica aprender a crear un gráfico con una presentación adecuada, sino también comprender cómo abordar los inputs necesarios para lo que se necesite comunicar y, así, determinar la forma más efectiva de expresarlo."
   },
   {
     "objectID": "index.html#entonces-por-qué-usar-r",
@@ -25,14 +25,70 @@
     "href": "index.html#ggplot",
     "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
     "section": "ggplot()",
-    "text": "ggplot()\n\nLa lógica que propone ggplot una de los paquetes de la familia tidyverse() es la estratificación\nSi existe un consenso en R, es que ggplot es la librería para graficar."
+    "text": "ggplot()\n\nLa lógica que propone ggplot una de los paquetes de la familia tidyverse() es la estratificación\nSi existe un consenso en R, es que ggplot es la librería para graficar.\nEn ggplot una capa se encarga de renderizar cada uno de los elementos visuales. Las capas forman una gramática o un conjunto de reglas mediante las cuales R creará los artefactos visuales."
   },
   {
     "objectID": "index.html#la-gramática-en-capas-de-gráficos-de-wickham-2009",
     "href": "index.html#la-gramática-en-capas-de-gráficos-de-wickham-2009",
     "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
     "section": "La gramática en capas de gráficos de Wickham (2009)",
-    "text": "La gramática en capas de gráficos de Wickham (2009)\n\nFigure 2: Adaptado de Introduction to data visualisation"
+    "text": "La gramática en capas de gráficos de Wickham (2009)\n\nFigure 2: Adaptado en Introduction to data visualisation"
+  },
+  {
+    "objectID": "index.html#las-capas-básicas",
+    "href": "index.html#las-capas-básicas",
+    "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
+    "section": "Las capas básicas",
+    "text": "Las capas básicas\n1. La data:\n\nLos datos que queremos representar en la grafica deben estar ordenados, es decir, cada fila debe representar una observación y cada columna debe representar una variable.\n\n2. El mapeo estético:\n\nLa segunda capa mapea las variables X y Y usando la funcion aes. Además, puede utilzar otros argumentos como el color y vincularlo a una columna diferente del conjunto de datos.\n\nggplot(dataframe) + \ngeom_(mapping = aes(x, y), ...) + ..."
+  },
+  {
+    "objectID": "index.html#dataset-worldbank",
+    "href": "index.html#dataset-worldbank",
+    "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
+    "section": "Dataset: WorldBank",
+    "text": "Dataset: WorldBank\n\nUtilicemos los datos económicos y sociales de diferentes países proporcionados por el Banco Mundial.\nPreprocesamiento de los datos:"
+  },
+  {
+    "objectID": "index.html#capa-data",
+    "href": "index.html#capa-data",
+    "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
+    "section": "Capa: data",
+    "text": "Capa: data\nggplot(data = dataf)"
+  },
+  {
+    "objectID": "index.html#capa-aesthetics",
+    "href": "index.html#capa-aesthetics",
+    "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
+    "section": "Capa: Aesthetics",
+    "text": "Capa: Aesthetics\nggplot(data = dataf, \n       mapping = aes(x = Mortalidad_Infantil, \n           y = PIB_Per_Capita))"
+  },
+  {
+    "objectID": "index.html#capa-geométrica-geom_",
+    "href": "index.html#capa-geométrica-geom_",
+    "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
+    "section": "Capa: Geométrica geom_",
+    "text": "Capa: Geométrica geom_\nggplot(data = dataf, \n       mapping = aes(x = Mortalidad_Infantil, \n           y = PIB_Per_Capita))  + # Para añadir la siguiente capa debemos utilizar el signo más (`+`)\n  geom_point()"
+  },
+  {
+    "objectID": "index.html#capas-coordinates-and-themes",
+    "href": "index.html#capas-coordinates-and-themes",
+    "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
+    "section": "Capas: Coordinates, and themes",
+    "text": "Capas: Coordinates, and themes\nggplot(data = dataf, \n       mapping = aes(x = Mortalidad_Infantil, y = PIB_Per_Capita)) + \n       geom_point() + \n       coord_trans(x = \"log10\", y = \"log10\") + \n       theme_classic()"
+  },
+  {
+    "objectID": "index.html#en-suma-en-un-solo-fragmento-de-código",
+    "href": "index.html#en-suma-en-un-solo-fragmento-de-código",
+    "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
+    "section": "En suma, en un solo fragmento de código:",
+    "text": "En suma, en un solo fragmento de código:\n# Crear la gráfica utilizando ggplot2\nggplot(dataf,                         # Data\n       aes(x = Mortalidad_Infantil,   # Your X-value\n           y = PIB_Per_Capita,        # Your Y-value\n           color = \"\")                # Podemos pintar con otra variable\n       ) +                            # Aesthetics\n  geom_point(size = 5, alpha = 0.8) + # Point\n  geom_smooth(method = \"lm\") +        # Linear regression\n  labs(title = \"Relación entre Tasa de Mortalidad Infantil y PIB per cápita\", # Title\n       x = \"Tasa de Mortalidad Infantil\", y = \"PIB per cápita\", col = \"\") +\n  theme_classic() + # apply a clean theme\n  theme(title = element_text(size = 18, face = \"bold\"),\n      text = element_text(size = 16))"
+  },
+  {
+    "objectID": "index.html#en-suma-en-un-solo-fragmento-de-código-1",
+    "href": "index.html#en-suma-en-un-solo-fragmento-de-código-1",
+    "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
+    "section": "En suma, en un solo fragmento de código:",
+    "text": "En suma, en un solo fragmento de código:"
   },
   {
     "objectID": "index.html#bibliografía",
@@ -42,10 +98,10 @@
     "text": "Bibliografía:\nWickham, H., Navarro, D., & Lin, T. (2009). ggplot2. Elegant Graphics for Data Analysis  (3ª ed.). Springer. https://ggplot2-book.org/\nWickham, H. (2010). A Layered Grammar of Graphics. Journal of Computational and Graphical Statistics, vol. 19, no. 1, pp. 3–28. https://vita.had.co.nz/papers/layered-grammar.pdf\nWickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). R for Data Science. Import, Tidy, Transform, Visualize, and Model Data (2ª ed.). O’Reilly Media, Inc. https://r4ds.hadley.nz/\nIkakis, N. (2018). Big data visualization tools.” arXiv preprint. arXiv:1801.08336"
   },
   {
-    "objectID": "index.html#section-1",
-    "href": "index.html#section-1",
+    "objectID": "index.html#más-recursos",
+    "href": "index.html#más-recursos",
     "title": "Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM",
-    "section": "",
-    "text": "Crear presentaciones (PPT):\nRevealjs\nAdvanced Reveal\nRevealjs Options\nRevealjs Plugins\n  \n\n\n&lt;Cuantipol&gt;"
+    "section": "Más recursos:",
+    "text": "Más recursos:\n\nRevealjs\nAdvanced Reveal\nRevealjs Options\nRevealjs Plugins\n\n\n\n&lt;Cuantipol&gt;"
   }
 ]

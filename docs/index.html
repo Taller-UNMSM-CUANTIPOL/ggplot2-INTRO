@@ -7,7 +7,7 @@
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Joel Belsasar">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #97947a;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #97947a;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2; background-color: #2b2b2b; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #dcc6e0; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #ffd700; } /* Attribute */
+    code span.bn { color: #dcc6e0; } /* BaseN */
+    code span.bu { color: #f5ab35; } /* BuiltIn */
+    code span.cf { color: #ffa07a; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffa07a; } /* Constant */
+    code span.co { color: #d4d0ab; } /* Comment */
+    code span.cv { color: #d4d0ab; font-style: italic; } /* CommentVar */
+    code span.do { color: #d4d0ab; font-style: italic; } /* Documentation */
+    code span.dt { color: #dcc6e0; } /* DataType */
+    code span.dv { color: #dcc6e0; } /* DecVal */
+    code span.er { color: #dcc6e0; } /* Error */
+    code span.ex { color: #ffd700; } /* Extension */
+    code span.fl { color: #f5ab35; } /* Float */
+    code span.fu { color: #ffd700; } /* Function */
+    code span.im { color: #f8f8f2; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; } /* Keyword */
+    code span.op { color: #00e0e0; } /* Operator */
+    code span.ot { color: #ffa07a; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.sc { color: #00e0e0; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #f5ab35; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -321,12 +386,12 @@
     }
   </style>
 </head>
-<body class="quarto-light">
+<body class="quarto-dark">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title"><strong>Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM</strong></h1>
+  <h1 class="title"><strong><b style="color : #E18B2A;">Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM</b></strong></h1>
   <p class="subtitle">Introducción <code>ggplot2</code></p>
 
 <div class="quarto-title-authors">
@@ -342,24 +407,30 @@ Joel Belsasar
 <nav role="doc-toc"> 
 <h2 id="toc-title">Table of contents</h2>
 <ul>
-<li><a href="#/herramientas-para-la-ciencia-de-datos" id="/toc-herramientas-para-la-ciencia-de-datos"><strong>Herramientas para la ciencia de datos</strong></a></li>
-<li><a href="#/visualizar-datos" id="/toc-visualizar-datos"><strong>Visualizar… datos</strong></a></li>
-<li><a href="#/entonces-por-qué-usar-r" id="/toc-entonces-por-qué-usar-r"><strong>Entonces, ¿por qué usar R?</strong></a></li>
-<li><a href="#/ggplot" id="/toc-ggplot"><strong><code>ggplot()</code></strong></a></li>
+<li><a href="#/herramientas-para-la-ciencia-de-datos" id="/toc-herramientas-para-la-ciencia-de-datos">Herramientas para la ciencia de datos</a></li>
+<li><a href="#/visualizar-datos" id="/toc-visualizar-datos">Visualizar… datos</a></li>
+<li><a href="#/entonces-por-qué-usar-r" id="/toc-entonces-por-qué-usar-r">Entonces, ¿por qué usar R?</a></li>
+<li><a href="#/ggplot" id="/toc-ggplot"><code>ggplot()</code></a></li>
 <li><a href="#/la-gramática-en-capas-de-gráficos-de-wickham-2009" id="/toc-la-gramática-en-capas-de-gráficos-de-wickham-2009">La gramática en capas de gráficos de Wickham (2009)</a></li>
-<li><a href="#/section" id="/toc-section"></a></li>
+<li><a href="#/las-capas-básicas" id="/toc-las-capas-básicas">Las capas básicas</a></li>
+<li><a href="#/dataset-worldbank" id="/toc-dataset-worldbank">Dataset: <code>WorldBank</code></a></li>
+<li><a href="#/capa-data" id="/toc-capa-data">Capa: data</a></li>
+<li><a href="#/capa-aesthetics" id="/toc-capa-aesthetics">Capa: Aesthetics</a></li>
+<li><a href="#/capa-geométrica-geom_" id="/toc-capa-geométrica-geom_">Capa: Geométrica <code>geom_</code></a></li>
+<li><a href="#/capas-coordinates-and-themes" id="/toc-capas-coordinates-and-themes">Capas: Coordinates, and themes</a></li>
+<li><a href="#/en-suma-en-un-solo-fragmento-de-código" id="/toc-en-suma-en-un-solo-fragmento-de-código">En suma, en un solo fragmento de código:</a></li>
+<li><a href="#/en-suma-en-un-solo-fragmento-de-código-1" id="/toc-en-suma-en-un-solo-fragmento-de-código-1">En suma, en un solo fragmento de código:</a></li>
 <li><a href="#/bibliografía" id="/toc-bibliografía">Bibliografía:</a></li>
-<li><a href="#/section-1" id="/toc-section-1"></a></li>
+<li><a href="#/más-recursos" id="/toc-más-recursos">Más recursos:</a></li>
 </ul>
 </nav>
 </section>
 <section id="herramientas-para-la-ciencia-de-datos" class="slide level2">
-<h2><strong>Herramientas para la ciencia de datos</strong></h2>
+<h2>Herramientas para la ciencia de datos</h2>
 
 <img data-src="./diagrams/whole-game.png" alt="A diagram displaying the data science cycle: Import -> Tidy -> Understand  (which has the phases Transform -> Visualize -> Model in a cycle) -> Communicate. Surrounding all of these is Program Import, Tidy, Transform, and Visualize is highlighted." width="535" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: <a href="https://r4ds.hadley.nz/whole-game#fig-ds-whole-game">Whole game: Visualización</a></p></section>
 <section id="visualizar-datos" class="slide level2">
-<h2><strong>Visualizar… datos</strong></h2>
-<p><em>- Generar visualizaciones implica comunicar una idea, una información, un dato de manera clara y lo mas precisa posible.</em></p>
+<h2>Visualizar… datos</h2>
 <p>Una visualización de datos efectiva brinda a los usuarios medios intuitivos para…</p>
 <ul>
 <li><p>explorar y analizar datos de manera interactiva, permitiéndoles</p></li>
@@ -373,7 +444,7 @@ Joel Belsasar
 </ul>
 </section>
 <section id="entonces-por-qué-usar-r" class="slide level2">
-<h2><strong>Entonces, ¿por qué usar R?</strong></h2>
+<h2>Entonces, ¿por qué usar R?</h2>
 <p><strong>Reproducibilidad</strong></p>
 <ul>
 <li>Puedes anotar el scrpit, agregar información extra como títulos, etiquetas y leyendas, y mantener el código de todas las versiones de tus gráficos para saber siempre cómo se crearon.</li>
@@ -388,19 +459,87 @@ Joel Belsasar
 </ul>
 </section>
 <section id="ggplot" class="slide level2">
-<h2><strong><code>ggplot()</code></strong></h2>
+<h2><code>ggplot()</code></h2>
 <ul>
 <li><p>La lógica que propone ggplot una de los paquetes de la familia tidyverse() es la estratificación</p></li>
 <li><p>Si existe un consenso en R, es que ggplot es la librería para graficar.</p></li>
+<li><p>En ggplot una capa se encarga de renderizar cada uno de los elementos visuales. Las capas forman una gramática o un conjunto de reglas mediante las cuales R creará los artefactos visuales.</p></li>
 </ul>
 </section>
 <section id="la-gramática-en-capas-de-gráficos-de-wickham-2009" class="slide level2">
 <h2>La gramática en capas de gráficos de <a href="https://vita.had.co.nz/papers/layered-grammar.pdf">Wickham (2009)</a></h2>
 
-<img data-src="./diagrams/gglayers.png" alt="A diagram displaying the data science cycle" width="683" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;2: Adaptado de <a href="https://github.com/QCBSRworkshops/workshop03">Introduction to data visualisation</a></p></section>
-<section id="section" class="slide level2">
-<h2></h2>
+<img data-src="./diagrams/gglayers.png" alt="A diagram displaying the data science cycle" width="683" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;2: Adaptado en <a href="https://github.com/QCBSRworkshops/workshop03">Introduction to data visualisation</a></p></section>
+<section id="las-capas-básicas" class="slide level2">
+<h2>Las capas básicas</h2>
+<p><strong>1. La data:</strong></p>
+<ul>
+<li>Los datos que queremos representar en la grafica deben estar ordenados, es decir, cada fila debe representar una observación y cada columna debe representar una variable.</li>
+</ul>
+<p><strong>2. El mapeo estético:</strong></p>
+<ul>
+<li>La segunda capa mapea las variables <em><code>X</code></em> y <em><code>Y</code></em> usando la funcion <code>aes</code>. Además, puede utilzar otros argumentos como el <code>color</code> y vincularlo a una columna diferente del conjunto de datos.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a>ggplot(dataframe) + </span>
+<span id="cb1-2"><a href="#cb1-2"></a>geom_(mapping = aes(x, y), ...) + ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
+<section id="dataset-worldbank" class="slide level2">
+<h2>Dataset: <code>WorldBank</code></h2>
+<ul>
+<li><p>Utilicemos los datos económicos y sociales de diferentes países proporcionados por el Banco Mundial.</p></li>
+<li><p>Preprocesamiento de los datos:</p></li>
+</ul>
+</section>
+<section id="capa-data" class="slide level2">
+<h2>Capa: data</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a>ggplot(data = dataf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section id="capa-aesthetics" class="slide level2">
+<h2>Capa: Aesthetics</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a>ggplot(data = dataf, </span>
+<span id="cb3-2"><a href="#cb3-2"></a>       mapping = aes(x = Mortalidad_Infantil, </span>
+<span id="cb3-3"><a href="#cb3-3"></a>           y = PIB_Per_Capita)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-5-1.png" width="576" class="r-stretch"></section>
+<section id="capa-geométrica-geom_" class="slide level2">
+<h2>Capa: Geométrica <code>geom_</code></h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a>ggplot(data = dataf, </span>
+<span id="cb4-2"><a href="#cb4-2"></a>       mapping = aes(x = Mortalidad_Infantil, </span>
+<span id="cb4-3"><a href="#cb4-3"></a>           y = PIB_Per_Capita))  + # Para añadir la siguiente capa debemos utilizar el signo más (<span class="in">`+`</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  geom_point()</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-6-1.png" width="576" class="r-stretch"></section>
+<section id="capas-coordinates-and-themes" class="slide level2">
+<h2>Capas: Coordinates, and themes</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1"></a>ggplot(data = dataf, </span>
+<span id="cb5-2"><a href="#cb5-2"></a>       mapping = aes(x = Mortalidad_Infantil, y = PIB_Per_Capita)) + </span>
+<span id="cb5-3"><a href="#cb5-3"></a>       geom_point() + </span>
+<span id="cb5-4"><a href="#cb5-4"></a>       coord_trans(x = "log10", y = "log10") + </span>
+<span id="cb5-5"><a href="#cb5-5"></a>       theme_classic()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-7-1.png" width="576" class="r-stretch"></section>
+<section id="en-suma-en-un-solo-fragmento-de-código" class="slide level2">
+<h2>En suma, en un solo fragmento de código:</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu"># Crear la gráfica utilizando ggplot2</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>ggplot(dataf,                         # Data</span>
+<span id="cb6-3"><a href="#cb6-3"></a>       aes(x = Mortalidad_Infantil,   # Your X-value</span>
+<span id="cb6-4"><a href="#cb6-4"></a>           y = PIB_Per_Capita,        # Your Y-value</span>
+<span id="cb6-5"><a href="#cb6-5"></a>           color = "")                # Podemos pintar con otra variable</span>
+<span id="cb6-6"><a href="#cb6-6"></a>       ) +                            # Aesthetics</span>
+<span id="cb6-7"><a href="#cb6-7"></a>  geom_point(size = 5, alpha = 0.8) + # Point</span>
+<span id="cb6-8"><a href="#cb6-8"></a>  geom_smooth(method = "lm") +        # Linear regression</span>
+<span id="cb6-9"><a href="#cb6-9"></a>  labs(title = "Relación entre Tasa de Mortalidad Infantil y PIB per cápita", # Title</span>
+<span id="cb6-10"><a href="#cb6-10"></a>       x = "Tasa de Mortalidad Infantil", y = "PIB per cápita", col = "") +</span>
+<span id="cb6-11"><a href="#cb6-11"></a>  theme_classic() + # apply a clean theme</span>
+<span id="cb6-12"><a href="#cb6-12"></a>  theme(title = element_text(size = 18, face = "bold"),</span>
+<span id="cb6-13"><a href="#cb6-13"></a>      text = element_text(size = 16))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="en-suma-en-un-solo-fragmento-de-código-1" class="slide level2">
+<h2>En suma, en un solo fragmento de código:</h2>
+
+<img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="864" class="r-stretch"></section>
 <section id="bibliografía" class="slide level2">
 <h2>Bibliografía:</h2>
 <p>Wickham, H., Navarro, D., &amp; Lin, T. (2009). <em>ggplot2. Elegant Graphics for Data Analysis </em> (3ª ed.). Springer. <a href="https://ggplot2-book.org/">https://ggplot2-book.org/</a></p>
@@ -408,14 +547,14 @@ Joel Belsasar
 <p>Wickham, H., Çetinkaya-Rundel, M., &amp; Grolemund, G. (2023). <em>R for Data Science. Import, Tidy, Transform, Visualize, and Model Data</em> (2ª ed.). O’Reilly Media, Inc.&nbsp;<a href="https://r4ds.hadley.nz/">https://r4ds.hadley.nz/</a></p>
 <p>Ikakis, N. (2018). Big data visualization tools.” arXiv preprint. <a href="https://arxiv.org/abs/1801.08336">arXiv:1801.08336</a></p>
 </section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<p>Crear presentaciones (PPT):</p>
-<p><a href="https://quarto.org/docs/presentations/revealjs/">Revealjs</a></p>
-<p><a href="https://quarto.org/docs/presentations/revealjs/advanced.html">Advanced Reveal</a></p>
-<p><a href="https://quarto.org/docs/reference/formats/presentations/revealjs.html">Revealjs Options</a></p>
-<p><a href="https://quarto.org/docs/extensions/revealjs.html">Revealjs Plugins</a></p>
-<p><a href=""></a> <a href=""></a> <a href=""></a></p>
+<section id="más-recursos" class="slide level2">
+<h2>Más recursos:</h2>
+<ul>
+<li><p><a href="https://quarto.org/docs/presentations/revealjs/">Revealjs</a></p></li>
+<li><p><a href="https://quarto.org/docs/presentations/revealjs/advanced.html">Advanced Reveal</a></p></li>
+<li><p><a href="https://quarto.org/docs/reference/formats/presentations/revealjs.html">Revealjs Options</a></p></li>
+<li><p><a href="https://quarto.org/docs/extensions/revealjs.html">Revealjs Plugins</a></p></li>
+</ul>
 
 <div class="footer footer-default">
 <p>&lt;<a href="https://taller-unmsm-cuantipol-2023.github.io/ggplot2-INTRO/">Cuantipol</a>&gt;</p>

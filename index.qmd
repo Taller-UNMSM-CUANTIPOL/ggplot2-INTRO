@@ -1,21 +1,21 @@
 ---
-title: "**Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM**"
+title: "**<b style = 'color : #E18B2A;'>Taller de Investigación: Política Cuantitativa “CUANTIPOL” - UNMSM</b>**"
 author:  Joel Belsasar
 subtitle: Introducción `ggplot2`
 date: 4/06/2023
 toc: true
 format:
   revealjs:
+    mainfont: Georgia
     smaller: true
     standalone: true
-    theme: default
     progress: true
+    theme: night
     footer: <[Cuantipol](https://taller-unmsm-cuantipol-2023.github.io/ggplot2-INTRO/)>
-incremental: false
 highlight-style: a11y
 ---
 
-## **Herramientas para la ciencia de datos**
+## Herramientas para la ciencia de datos
 
 ```{r}
 #| label: fig-ds-whole-game 
@@ -32,9 +32,7 @@ highlight-style: a11y
 knitr::include_graphics("./diagrams/whole-game.png", dpi = 270)
 ```
 
-## **Visualizar... datos**
-
-*- Generar visualizaciones implica comunicar una idea, una información, un dato de manera clara y lo mas precisa posible.*
+## Visualizar... datos
 
 Una visualización de datos efectiva brinda a los usuarios medios intuitivos para...
 
@@ -50,7 +48,7 @@ Pero...
 
 - No solo implica aprender a crear un gráfico con una presentación adecuada, sino también comprender cómo abordar los *inputs* necesarios para lo que se necesite comunicar y, así, determinar la forma más efectiva de expresarlo.
 
-## **Entonces, ¿por qué usar R?**
+## Entonces, ¿por qué usar R?
 
 **Reproducibilidad**
 
@@ -64,35 +62,181 @@ Pero...
 
   - Se pueden utilizar múltiples paquetes y funciones para lograr una excelente visualización como `base R`, `plotly`, `sjPlot`, `mapview`, `igraph` y en particular nos vamos a enfocar en `ggplot2`.
 
-## **`ggplot()`**
+## `ggplot()`
 
 - La lógica que propone ggplot una de los paquetes de la familia tidyverse() es la estratificación
 
 - Si existe un consenso en R, es que ggplot es la librería para graficar.
 
+- En ggplot una capa se encarga de renderizar cada uno de los elementos visuales. Las capas forman una gramática o un conjunto de reglas mediante las cuales R creará los artefactos visuales. 
 
 ## La gramática en capas de gráficos de [Wickham (2009)](https://vita.had.co.nz/papers/layered-grammar.pdf)
-
 
 ```{r}
 #| label: fig-ds-gglayer 
 #| echo: false
 #| out.width: NULL
 #| fig-cap: |
-#|   Adaptado de [Introduction to data visualisation](https://github.com/QCBSRworkshops/workshop03)
+#|   Adaptado en [Introduction to data visualisation](https://github.com/QCBSRworkshops/workshop03)
 #| fig-alt: |
 #|   A diagram displaying the data science cycle
 
 knitr::include_graphics("./diagrams/gglayers.png", dpi = 270)
 ```
 
-##
+## Las capas básicas
 
+**1. La data:**
 
+- Los datos que queremos representar en la grafica deben estar ordenados, es decir, cada fila debe representar una observación y cada columna debe representar una variable. 
 
+**2. El mapeo estético:**
 
+- La segunda capa mapea las variables *`X`* y *`Y`* usando la funcion `aes`. Además, puede utilzar otros argumentos como el `color` y vincularlo a una columna diferente del conjunto de datos.  
+  
+```markdown
+ggplot(dataframe) + 
+geom_(mapping = aes(x, y), ...) + ...
+```
 
+## Dataset: `WorldBank`
 
+- Utilicemos los datos económicos y sociales de diferentes países proporcionados por el Banco Mundial.
+
+- Preprocesamiento de los datos:
+```{r}
+pacman::p_load(WDI, # Data World Bank
+               ggplot2
+               )
+# Buscar indicadores relacionados con el PIB per cápita:
+indicadores <- WDIsearch("GDP per capita")
+
+dataf <- WDI(country = "PE", indicator = c("NY.GDP.PCAP.CD", # PBI
+                                             "SH.DYN.MORT"), # Mortalidad
+             start = 2000, end = 2022)
+dataf <- data.frame(dataf)
+
+# Renombrar las variables del dataframe
+colnames(dataf)[5:6] <- c("PIB_Per_Capita", "Mortalidad_Infantil")
+```
+
+## Capa: data
+
+```markdown
+ggplot(data = dataf)
+```
+```{r}
+ggplot(data = dataf)
+# Without any other information, your data will not be visualised.
+```
+
+## Capa: Aesthetics
+
+```markdown
+ggplot(data = dataf, 
+       mapping = aes(x = Mortalidad_Infantil, 
+           y = PIB_Per_Capita)) 
+```
+```{r, fig.height=5, fig.width=6}
+# Next layer: aesthetics.
+# Here, we tell R to plot length on the x axis, and depth on the y axis
+# but we still haven't told R how we want these data to be represented...
+ggplot(data = dataf, 
+       mapping = aes(x = Mortalidad_Infantil, 
+           y = PIB_Per_Capita)) 
+# See? Our variables are now assigned to the x and y axes, 
+# but nothing is plotted yet.
+# We have not yet told `R` *how* we want to represent the data though, so our data will not yet be plotted.
+```
+
+## Capa: Geométrica `geom_`
+
+```markdown
+ggplot(data = dataf, 
+       mapping = aes(x = Mortalidad_Infantil, 
+           y = PIB_Per_Capita))  + # Para añadir la siguiente capa debemos utilizar el signo más (`+`)
+  geom_point()
+  
+```
+```{r, fig.height=5, fig.width=6, message = FALSE, warning = FALSE}
+# Next layer(s): geometric object(s)
+ggplot(data = dataf, 
+       aes(x = Mortalidad_Infantil, 
+           y = PIB_Per_Capita))  + # Use the plus sign to add each additional layer
+  geom_point() # The geom layer determines what style of plot we are using.
+               # geom_point() plots the data as points!
+# Geometric objects, or `geoms`, determine the visual representation 
+# of your data. We can begin by plotting our data points as a scatter plot, 
+# to see how bill depth and bill length relate to each other.
+
+# Note that you can add several `geoms` in one plot. 
+# For example, we could add a line on this plot to show a threshold value, 
+# or add a linear regression. For now, let us keep it simple!
+```
+
+## Capas: Coordinates, and themes
+
+```markdown
+ggplot(data = dataf, 
+       mapping = aes(x = Mortalidad_Infantil, y = PIB_Per_Capita)) + 
+       geom_point() + 
+       coord_trans(x = "log10", y = "log10") + 
+       theme_classic()
+```
+```{r,fig.height=5, fig.width=6, warning = FALSE}
+# Next layer(s): customizations!
+# Facets split a plot into separate windows according to some category in the data.
+ggplot(data = dataf, 
+       aes(x = Mortalidad_Infantil, 
+           y = PIB_Per_Capita)) +
+  geom_point() + 
+  coord_trans(x = "log10", y = "log10") + 
+       theme_classic()
+
+# Now that the dataset is plotted, we can customize the plot to clarify the 
+# message, or to add more information. Facets are a popular way of dividing 
+# a plot into several windows according to some category in the data, 
+# to visually differentiate groupings. We can explore this plot differently 
+# if we use `facet_wrap()` to create separate "facets" according to our species groupings:
+```
+
+## En suma, en un solo fragmento de código:
+
+```markdown
+# Crear la gráfica utilizando ggplot2
+ggplot(dataf,                         # Data
+       aes(x = Mortalidad_Infantil,   # Your X-value
+           y = PIB_Per_Capita,        # Your Y-value
+           color = "")                # Podemos pintar con otra variable
+       ) +                            # Aesthetics
+  geom_point(size = 5, alpha = 0.8) + # Point
+  geom_smooth(method = "lm") +        # Linear regression
+  labs(title = "Relación entre Tasa de Mortalidad Infantil y PIB per cápita", # Title
+       x = "Tasa de Mortalidad Infantil", y = "PIB per cápita", col = "") +
+  theme_classic() + # apply a clean theme
+  theme(title = element_text(size = 18, face = "bold"),
+      text = element_text(size = 16))
+```
+
+## En suma, en un solo fragmento de código:
+
+```{r, fig.height=7, fig.width=9, results='hide', message=FALSE, warning=FALSE}
+# Crear la gráfica utilizando ggplot2
+ggplot(data = dataf,               # Data
+       aes(x = Mortalidad_Infantil,        # Your X-value
+           y = PIB_Per_Capita,         # Your Y-value
+           color = "")                # Podemos pintar con otra variable
+       ) +                            # Aesthetics
+  geom_point(size = 5, alpha = 0.8) + # Point
+  geom_smooth(method = "lm") +        # Linear regression
+  labs(title = "Relación entre la tasa de Mortalidad Infantil y\n el PBI per cápita", # Title
+       x = "Tasa de Mortalidad Infantil",
+       y = "PBI per cápita",
+       col = "") +
+  theme_classic() + # apply a clean theme
+  theme(title = element_text(size = 18, face = "bold"),
+      text = element_text(size = 16))
+```
 
 ## Bibliografía:
 
@@ -102,59 +246,15 @@ Wickham, H. (2010). *A Layered Grammar of Graphics*. Journal of Computational an
 
 Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). *R for Data Science. Import, Tidy, Transform, Visualize, and Model Data* (2ª ed.). O'Reilly Media, Inc. [https://r4ds.hadley.nz/](https://r4ds.hadley.nz/)
 
-
 Ikakis, N. (2018). Big data visualization tools." arXiv preprint. [arXiv:1801.08336](https://arxiv.org/abs/1801.08336)
 
 
-##
-Crear presentaciones (PPT):
+## Más recursos:
 
-[Revealjs](https://quarto.org/docs/presentations/revealjs/)
+- [Revealjs](https://quarto.org/docs/presentations/revealjs/)
 
-[Advanced Reveal](https://quarto.org/docs/presentations/revealjs/advanced.html)
+- [Advanced Reveal](https://quarto.org/docs/presentations/revealjs/advanced.html)
 
-[Revealjs Options](https://quarto.org/docs/reference/formats/presentations/revealjs.html)
+- [Revealjs Options](https://quarto.org/docs/reference/formats/presentations/revealjs.html)
 
-[Revealjs Plugins](https://quarto.org/docs/extensions/revealjs.html)
-
-
-[]()
-[]()
-[]()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [Revealjs Plugins](https://quarto.org/docs/extensions/revealjs.html)
